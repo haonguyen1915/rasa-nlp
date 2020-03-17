@@ -1,0 +1,16 @@
+### Message
+{
+    "text": "Hey how are you today ?"
+}
+
+### ConveRTTokenizer
+{
+    "tokens": ["hey", "how", "are", "you", "today", "__CLS__"],
+    "text": "Hey how are you today ?"
+}
+### featurizer
+{
+    "tokens": ["hey", "how", "are", "you", "today", "__CLS__"],
+    "text_dense_features": [6, 1024],
+    "text": "Hey how are you today ?"
+}

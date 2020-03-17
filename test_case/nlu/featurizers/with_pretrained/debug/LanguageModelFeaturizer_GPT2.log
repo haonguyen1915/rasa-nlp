@@ -1,0 +1,46 @@
+### Training data
+[{
+    "text": "Good evening."
+}, {
+    "text": "here is the sentence I want embeddings for."
+}]
+
+### transformers_nlp train
+[{
+    "text_language_model_doc": {
+        "token_ids": [10248, 10197, 278],
+        "tokens": ["Good", "even", "ing"],
+        "sequence_features": [3, 768],
+        "sentence_features": [1, 768]
+    },
+    "text": "Good evening."
+}, {
+    "text_language_model_doc": {
+        "token_ids": [1456, 271, 1169, 34086, 594, 40, 42949, 20521, 67, 654, 1640],
+        "tokens": ["here", "is", "the", "sent", "ence", "I", "want", "embed", "d", "ings", "for"],
+        "sequence_features": [11, 768],
+        "sentence_features": [1, 768]
+    },
+    "text": "here is the sentence I want embeddings for."
+}]
+
+### LanguageModelFeaturizer train
+[{
+    "text_language_model_doc": {
+        "token_ids": [10248, 10197, 278],
+        "tokens": ["Good", "even", "ing"],
+        "sequence_features": [3, 768],
+        "sentence_features": [1, 768]
+    },
+    "text_dense_features": [4, 768],
+    "text": "Good evening."
+}, {
+    "text_language_model_doc": {
+        "token_ids": [1456, 271, 1169, 34086, 594, 40, 42949, 20521, 67, 654, 1640],
+        "tokens": ["here", "is", "the", "sent", "ence", "I", "want", "embed", "d", "ings", "for"],
+        "sequence_features": [11, 768],
+        "sentence_features": [1, 768]
+    },
+    "text_dense_features": [12, 768],
+    "text": "here is the sentence I want embeddings for."
+}]

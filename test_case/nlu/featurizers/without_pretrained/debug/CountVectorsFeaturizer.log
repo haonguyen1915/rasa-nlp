@@ -1,0 +1,8 @@
+#### samples
+    "hello goodbye hello"
+
+#### all_tokens
+[['hello', 'goodbye', 'hello', '__cls__']]
+
+### Featurizer
+[[0, 1]]

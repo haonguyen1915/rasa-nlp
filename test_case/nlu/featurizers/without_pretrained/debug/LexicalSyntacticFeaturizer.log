@@ -1,0 +1,71 @@
+### Sample
+"HELLO goodbye hello",
+### feature_to_idx_dict
+-1: means feature of word before
+0:  means feature of word current
+1:  means feature of word next
+{
+    "-1:BOS": {
+        "False": 0,
+        "True": 1
+    },
+    "-1:upper": {
+        "False": 2,
+        "True": 3
+    },
+    "0:BOS": {
+        "False": 4,
+        "True": 5
+    },
+    "0:EOS": {
+        "False": 6,
+        "True": 7
+    },
+    "0:digit": {
+        "False": 8
+    },
+    "0:prefix2": {
+        "HE": 9,
+        "go": 10,
+        "he": 11
+    },
+    "1:EOS": {
+        "False": 12,
+        "True": 13
+    },
+    "1:low": {
+        "True": 14
+    }
+}
+
+### sentence_features
+[{
+    "0:BOS": true,
+    "0:EOS": false,
+    "0:prefix2": "HE",
+    "0:digit": false,
+    "1:EOS": false,
+    "1:low": true
+}, {
+    "-1:BOS": true,
+    "-1:upper": true,
+    "0:BOS": false,
+    "0:EOS": false,
+    "0:prefix2": "go",
+    "0:digit": false,
+    "1:EOS": true,
+    "1:low": true
+}, {
+    "-1:BOS": false,
+    "-1:upper": false,
+    "0:BOS": false,
+    "0:EOS": true,
+    "0:prefix2": "he",
+    "0:digit": false
+}]
+
+### one_hot_feature_vector
+[[0. 0. 0. 0. 0. 1. 1. 0. 1. 1. 0. 0. 1. 0. 1.]
+ [0. 1. 0. 1. 1. 0. 1. 0. 1. 0. 1. 0. 0. 1. 1.]
+ [1. 0. 1. 0. 1. 0. 0. 1. 1. 0. 0. 1. 0. 0. 0.]
+ [1. 1. 1. 1. 2. 1. 2. 1. 3. 1. 1. 1. 1. 1. 2.]]

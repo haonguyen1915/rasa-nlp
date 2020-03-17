@@ -1,0 +1,57 @@
+[
+  {
+    "name": "WhitespaceTokenizer",
+    "epochs": 1
+  },
+  {
+    "name": "RegexFeaturizer",
+    "epochs": 1
+  },
+  {
+    "features": [
+      [
+        "low",
+        "title",
+        "upper"
+      ],
+      [
+        "BOS",
+        "EOS",
+        "low",
+        "prefix5",
+        "prefix2",
+        "suffix5",
+        "suffix3",
+        "suffix2",
+        "upper",
+        "title",
+        "digit"
+      ],
+      [
+        "low",
+        "title",
+        "upper"
+      ]
+    ],
+    "name": "LexicalSyntacticFeaturizer",
+    "epochs": 1
+  },
+  {
+    "epochs": 10,
+    "intent_classification": true,
+    "entity_recognition": true,
+    "use_masked_language_model": false,
+    "name": "DIETClassifier",
+    "number_of_transformer_layers": 0
+  },
+  {
+    "epochs": 1,
+    "name": "ResponseSelector",
+    "intent_classification": true,
+    "entity_recognition": false
+  },
+  {
+    "name": "EntitySynonymMapper",
+    "epochs": 1
+  }
+]

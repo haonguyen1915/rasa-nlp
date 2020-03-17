@@ -1,0 +1,72 @@
+[
+  {
+    "name": "WhitespaceTokenizer",
+    "epochs": 1
+  },
+  {
+    "name": "RegexFeaturizer",
+    "epochs": 1
+  },
+  {
+    "features": [
+      [
+        "low",
+        "title",
+        "upper"
+      ],
+      [
+        "BOS",
+        "EOS",
+        "low",
+        "upper",
+        "title",
+        "digit"
+      ],
+      [
+        "low",
+        "title",
+        "upper"
+      ]
+    ],
+    "name": "LexicalSyntacticFeaturizer",
+    "epochs": 1
+  },
+  {
+    "name": "CountVectorsFeaturizer",
+    "epochs": 1
+  },
+  {
+    "name": "CRFEntityExtractor",
+    "epochs": 1
+  },
+  {
+    "name": "DucklingHTTPExtractor",
+    "epochs": 1
+  },
+  {
+    "epochs": 1,
+    "intent_classification": false,
+    "entity_recognition": true,
+    "use_masked_language_model": false,
+    "name": "DIETClassifier",
+    "number_of_transformer_layers": 0
+  },
+  {
+    "epochs": 1,
+    "name": "EmbeddingIntentClassifier",
+    "intent_classification": true,
+    "entity_recognition": false,
+    "use_masked_language_model": false,
+    "number_of_transformer_layers": 0
+  },
+  {
+    "epochs": 1,
+    "name": "ResponseSelector",
+    "intent_classification": true,
+    "entity_recognition": false
+  },
+  {
+    "name": "EntitySynonymMapper",
+    "epochs": 1
+  }
+]

@@ -1,0 +1,86 @@
+### "i'm looking for a place in the north of town"
+{
+    "intent": {
+        "name": "restaurant_search",
+        "confidence": 0.23607638478279114
+    },
+    "entities": [{
+        "start": 31,
+        "end": 36,
+        "value": "north",
+        "entity": "location",
+        "confidence": 0.8499915209666133,
+        "extractor": "CRFEntityExtractor"
+    }],
+    "intent_ranking": [{
+        "name": "restaurant_search",
+        "confidence": 0.23607638478279114
+    }, {
+        "name": "affirm",
+        "confidence": 0.2353643923997879
+    }, {
+        "name": "chitchat",
+        "confidence": 0.20030540227890015
+    }, {
+        "name": "greet",
+        "confidence": 0.17650705575942993
+    }, {
+        "name": "goodbye",
+        "confidence": 0.15174679458141327
+    }],
+    "response_selector": {
+        "default": {
+            "response": {
+                "name": null,
+                "confidence": 0.0
+            },
+            "ranking": []
+        }
+    },
+    "text": "i'm looking for a place in the north of town"
+}
+
+### "show me chinese restaurants"
+{
+    "intent": {
+        "name": "greet",
+        "confidence": 0.2085597962141037
+    },
+    "entities": [{
+        "start": 8,
+        "end": 15,
+        "value": "chinese",
+        "entity": "cuisine",
+        "confidence": 0.8541687608423842,
+        "extractor": "CRFEntityExtractor",
+        "processors": ["EntitySynonymMapper"]
+    }],
+    "intent_ranking": [{
+        "name": "greet",
+        "confidence": 0.2085597962141037
+    }, {
+        "name": "restaurant_search",
+        "confidence": 0.20781782269477844
+    }, {
+        "name": "affirm",
+        "confidence": 0.2022279053926468
+    }, {
+        "name": "chitchat",
+        "confidence": 0.19070123136043549
+    }, {
+        "name": "goodbye",
+        "confidence": 0.19069316983222961
+    }],
+    "response_selector": {
+        "default": {
+            "response": {
+                "name": null,
+                "confidence": 0.0
+            },
+            "ranking": []
+        }
+    },
+    "text": "show me chinese restaurants"
+}
+
+Process finished with exit code 0
