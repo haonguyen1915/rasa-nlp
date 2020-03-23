@@ -1,0 +1,23 @@
+deque([frozenset(),
+       frozenset({('entity_name', 1.0), ('slot_name_0', 1.0), ('prev_action_listen', 1.0), ('intent_greet', 1.0)}),
+       frozenset({('entity_name', 1.0), ('prev_utter_greet', 1.0), ('slot_name_0', 1.0), ('intent_greet', 1.0)}),
+       frozenset({('entity_name', 1.0), ('slot_name_0', 1.0), ('prev_action_listen', 1.0), ('intent_greet', 1.0)})])
+
+deque([frozenset(),
+       frozenset({('intent_greet', 1.0), ('prev_action_listen', 1.0)}),
+       frozenset({('intent_greet', 1.0), ('prev_utter_greet', 1.0)}),
+       frozenset({('intent_greet', 1.0), ('prev_action_listen', 1.0)})])
+
+deque([frozenset(),
+       frozenset({('intent_greet', 1.0), ('prev_action_listen', 1.0)}),
+       frozenset({('intent_greet', 1.0), ('prev_utter_greet', 1.0)}),
+       frozenset({('intent_spam', 1.0), ('prev_action_listen', 1.0)}),
+       frozenset({('prev_utter_spam', 1.0), ('intent_spam', 1.0)}),
+       frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)}),
+       frozenset({('intent_goodbye', 1.0), ('prev_utter_goodbye', 1.0)}),
+       frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)})])
+
+deque([frozenset(),
+       frozenset({('intent_spam', 1.0), ('prev_action_listen', 1.0)}),
+       frozenset({('prev_utter_spam', 1.0), ('intent_spam', 1.0)}),
+       frozenset({('intent_spam', 1.0), ('prev_action_listen', 1.0)})])

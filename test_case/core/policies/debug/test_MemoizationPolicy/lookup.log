@@ -1,0 +1,31 @@
+### domain.action_names
+{
+     0: 'action_listen',
+     1: 'action_restart',
+     2: 'action_session_start',
+     3: 'action_default_fallback',
+     4: 'action_deactivate_form',
+     5: 'action_revert_fallback_events',
+     6: 'action_default_ask_affirmation',
+     7: 'action_default_ask_rephrase',
+     8: 'action_back',
+     9: 'utter_channel',
+     10: 'utter_default',
+     11: 'utter_goodbye',
+     12: 'utter_greet'
+ }
+
+### Dictionary
+{
+    "eJyLzivNydFRwCSra2MBj0wJzQ==": 0,
+    "eJyLzivNydFRQCara4E4Na8ks6QyPi8xN9VKwVDPQEchM68EKBifXpSaWgIVKihKLYtPTC7JzM+Lz8ksBspDJYpz8kvAeuMNwCK1sQBXAyMQ": 12,
+    "eJyLzivNydFRgJDVtUCcmleSWVIZn5eYm2qlYKhnoKOQmVcCFIxPL0pNLYEKFRSllsUnJpdk5ufF52QWA+WhEsU5+SVgvfEGYBHSTCwtKUktQhHGMC8WACEmO5E=": 0,
+    "eJyLzivNydFRQCara4E4M68kNa8kPr0oNbXESsFQz0BHoaAotSw+MbkkMz8vPiezGCgPlqiNBQA5dhe4": 12,
+    "eJyLzivNydFRgJDVtUCcmVeSmlcSn16UmlpipWCoZ6CjUFCUWhafmFySmZ8Xn5NZDJQHS+BTXVpSklqEJFwbCwDHaiTh": 0,
+    "eJyLzivNydFRqK4F4sy8ktS8kvj0otTUEisFQz0DHYWCotSy+MTkksz8vPiczGKgPFgCn+rSkpLUIiRhJLUpqWmJpTmEzI4FAByOM5o=": 10,
+    "eJyLrq7VUajOzCtJzSuJTy9KTS2xUjDUM9BRKChKLYtPTC7JzM+Lz8ksBsqDJfCpLi0pSS1CEkZSm5KalliaQ7zZWNRDTEeWqI0FAOCjQl8=": 0,
+    "eJyLrs7MK0nNK4lPL0pNLbFSMNQz0FEoKEoti09MLsnMz4vPySwGyoMlanUUcKouLSlJLUISRlKbkpqWWJpDvNlY1ENMR5ZAdkt+fkpSZSoB82MBxtVR3w==": 11,
+    "eJyLrs7MK0nNK4lPL0pNLbFSMNQz0FEoKEotiy8tKUktQhKu1VGAqU1JTUsszUFRnZhckpmfF5+TWQxUQYR6iOnIEkjq0/PzU5IqU4k2H4t6qOuRJGpjAYI3UsE=": 0,
+    "eJyLzivNydFRQCara4E4M68kNa8kPiU1LbE0p8RKwVDPQEehoCi1LD4xuSQzPy8+J7MYqAIsURsLAG6HGIY=": 10,
+    "eJyLzivNydFRgJDVtUCcmVeSmlcSn5KalliaU2KlYKhnoKNQUJRaFp+YXJKZnxefk1kMVAGWwK++tKQktQhFojYWALzCJ0s=": 0
+}

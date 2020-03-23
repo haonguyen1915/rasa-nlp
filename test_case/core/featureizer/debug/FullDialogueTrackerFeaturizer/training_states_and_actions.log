@@ -1,0 +1,21 @@
++----------------------------------------------------------------+---------------------------------------------------------------+
+|                            Decoded                             |                            Action                             |
++================================================================+===============================================================+
+| [{}, {'intent_greet': 1.0, 'slot_name_0': 1.0, 'entity_name':  | ['action_listen', 'utter_greet', 'action_listen']             |
+| 1.0, 'prev_action_listen': 1.0}, {'intent_greet': 1.0,         |                                                               |
+| 'slot_name_0': 1.0, 'entity_name': 1.0, 'prev_utter_greet':    |                                                               |
+| 1.0}]                                                          |                                                               |
++----------------------------------------------------------------+---------------------------------------------------------------+
+| [{}, {'prev_action_listen': 1.0, 'intent_greet': 1.0},         | ['action_listen', 'utter_greet', 'action_listen']             |
+| {'intent_greet': 1.0, 'prev_utter_greet': 1.0}]                |                                                               |
++----------------------------------------------------------------+---------------------------------------------------------------+
+| [{}, {'prev_action_listen': 1.0, 'intent_greet': 1.0},         | ['action_listen', 'utter_greet', 'action_listen',             |
+| {'intent_greet': 1.0, 'prev_utter_greet': 1.0},                | 'utter_spam', 'action_listen', 'utter_goodbye',               |
+| {'intent_spam': 1.0, 'prev_action_listen': 1.0},               | 'action_listen']                                              |
+| {'intent_spam': 1.0, 'prev_utter_spam': 1.0},                  |                                                               |
+| {'prev_action_listen': 1.0, 'intent_goodbye': 1.0},            |                                                               |
+| {'prev_utter_goodbye': 1.0, 'intent_goodbye': 1.0}]            |                                                               |
++----------------------------------------------------------------+---------------------------------------------------------------+
+| [{}, {'intent_spam': 1.0, 'prev_action_listen': 1.0},          | ['action_listen', 'utter_spam', 'action_listen']              |
+| {'intent_spam': 1.0, 'prev_utter_spam': 1.0}]                  |                                                               |
++----------------------------------------------------------------+---------------------------------------------------------------+

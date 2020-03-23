@@ -85,6 +85,8 @@ def test_train_model_without_data():
     td = load_data(DEFAULT_DATA_PATH)
     language, pipeline = pipelines_for_tests()[1]
     _config = RasaNLUModelConfig({"pipeline": pipeline, "language": language})
+    show_dict({"pipeline": pipeline, "language": language})
+    exit()
 
     trainer = Trainer(_config)
     trainer.train(td)

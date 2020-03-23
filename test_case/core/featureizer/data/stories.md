@@ -1,6 +1,6 @@
 ## only_start
-* default
-    - utter_default
+* spam
+    - utter_spam
 
 ## only_end
 * greet OR greet{"name": "Peter"}
@@ -9,7 +9,7 @@
 ## multiple_turns
 * greet
     - utter_greet
-* default
-    - utter_default
+* spam
+    - utter_spam
 * goodbye
     - utter_goodbye

@@ -1,0 +1,45 @@
+{
+  "pipeline": [
+    {
+      "name": "pretrained_embeddings_spacy",
+      "epochs": 1
+    },
+    {
+      "name": "RegexFeaturizer",
+      "epochs": 1
+    },
+    {
+      "name": "LexicalSyntacticFeaturizer",
+      "epochs": 1
+    },
+    {
+      "name": "CountVectorsFeaturizer",
+      "epochs": 1
+    },
+    {
+      "name": "CRFEntityExtractor",
+      "epochs": 1
+    },
+    {
+      "name": "DucklingHTTPExtractor",
+      "epochs": 1
+    },
+    {
+      "name": "DIETClassifier",
+      "epochs": 1
+    },
+    {
+      "name": "EmbeddingIntentClassifier",
+      "epochs": 1
+    },
+    {
+      "name": "ResponseSelector",
+      "epochs": 1
+    },
+    {
+      "name": "EntitySynonymMapper",
+      "epochs": 1
+    }
+  ],
+  "language": "en"
+}
