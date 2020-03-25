@@ -11,24 +11,6 @@ from constants_ import *
 prj_dir = "{}/test_case/core/policies".format(PRJ_DIR)
 
 
-def print_data_training(decoded, actions):
-    t = Texttable(max_width=130)
-    t.add_rows([["Decoded", "Action"]])
-    for decode, action in zip(decoded, actions):
-        t.add_row([str(decode), str(action)])
-    print(t.draw())
-
-
-# def get_tracker(events) -> DialogueStateTracker:
-#     return DialogueStateTracker.from_events("sender", events, [], 20)
-#
-
-# def train_trackers(domain, augmentation_factor=20):
-#     return training.load_data(
-#         DEFAULT_STORIES_FILE, domain, augmentation_factor=augmentation_factor
-#     )
-
-
 async def test_train_memorise():
     default_domain = Domain.load(DEFAULT_DOMAIN_PATH_WITH_SLOTS)
     trackers = await training.load_data(
@@ -52,7 +34,8 @@ async def test_infer():
         states = [None, {}, {'prev_action_listen': 1.0, 'intent_greet': 1.0},
                   {'intent_greet': 1.0, 'prev_utter_greet': 1.0}, {'prev_action_listen': 1.0, 'intent_default': 1.0}]
         states = [{'prev_action_listen': 1.0, 'intent_greet': 1.0}, {'intent_greet': 1.0, 'prev_utter_greet': 1.0},
-                  {'prev_action_listen': 1.0, 'intent_default': 1.0}, {'prev_utter_default': 1.0, 'intent_default': 1.0},
+                  {'prev_action_listen': 1.0, 'intent_default': 1.0},
+                  {'prev_utter_default': 1.0, 'intent_default': 1.0},
                   {'prev_action_listen': 1.0, 'intent_goodbye': 1.0}]
         recalled = policy.recall(states, tracker, default_domain)
         print(default_domain.action_names[recalled])

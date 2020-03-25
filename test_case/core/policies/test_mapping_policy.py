@@ -43,7 +43,11 @@ async def test_maping_policy():
         user_uttered(intent_mapping[0][0], 1),
     ]
     tracker = DialogueStateTracker.from_events("sender", events, [], 20)
+    viz_tracker(tracker)
     scores = policy.predict_action_probabilities(tracker, default_domain)
+    print(default_domain.action_names)
+    class_to_idx = {cl:idx for idx, cl in enumerate(default_domain.action_names)}
+    print(class_to_idx)
     index = scores.index(max(scores))
     print("action names: {}".format(default_domain.action_names))
     print(default_domain.action_names[index])

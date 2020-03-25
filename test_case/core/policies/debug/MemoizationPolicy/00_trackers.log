@@ -1,5 +1,6 @@
+
 +----------------------------+---------------------------------------------------------------------------------------------------+
-|       Trackers name        |                                             Contents                                              |
+|          Trackers          |                                             Contents                                              |
 +============================+===================================================================================================+
 | 0: TrackerWithCachedStates | events: ['ActionExecuted (action_listen, False)', 'UserUttered (greet{"name": "Peter"})',         |
 |                            | 'SlotSet ((name:Peter), )', 'ActionExecuted (utter_greet, False)', 'ActionExecuted                |

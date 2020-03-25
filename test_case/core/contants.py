@@ -1,3 +1,34 @@
+import asyncio
+import os
+
+from sanic.request import Request
+import uuid
+from datetime import datetime
+
+from typing import Text, Iterator
+
+import pytest
+from _pytest.tmpdir import TempdirFactory
+
+import rasa.utils.io
+from rasa.core.agent import Agent
+from rasa.core.channels.channel import CollectingOutputChannel, OutputChannel
+from rasa.core.domain import Domain, SessionConfig
+from rasa.core.events import ReminderScheduled, UserUttered, ActionExecuted
+from rasa.core.interpreter import RegexInterpreter
+from rasa.core.nlg import TemplatedNaturalLanguageGenerator
+from rasa.core.policies.ensemble import PolicyEnsemble, SimplePolicyEnsemble
+from rasa.core.policies.memoization import (
+    AugmentedMemoizationPolicy,
+    MemoizationPolicy,
+    Policy,
+)
+from rasa.core.processor import MessageProcessor
+from rasa.core.slots import Slot
+from rasa.core.tracker_store import InMemoryTrackerStore, MongoTrackerStore
+from rasa.core.trackers import DialogueStateTracker
+
+
 DEFAULT_DOMAIN_PATH_WITH_SLOTS = "/Users/hao/Projects/Ftech/Onboardings/rasa-nlp/data/test_domains/default_with_slots.yml"
 # DEFAULT_DOMAIN_PATH_WITH_SLOTS = "data/test_domains/default_with_slots.yml"
 
@@ -38,3 +69,5 @@ EXAMPLE_DOMAINS = [
     "examples/moodbot/domain.yml",
     "examples/restaurantbot/domain.yml",
 ]
+default_domain = Domain.load(DEFAULT_DOMAIN_PATH_WITH_SLOTS)
+default_nlg = DialogueStateTracker("my-sender", default_domain.slots)

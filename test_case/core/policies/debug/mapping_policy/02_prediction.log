@@ -1,0 +1,48 @@
+#### Tracker input
++----------------------+---------------------------------------------------------------------------------------+
+| DialogueStateTracker |                                       Contents                                        |
++======================+=======================================================================================+
+| events               | ['ActionExecuted (action_listen, False)', 'UserUttered (Random)']                     |
++----------------------+---------------------------------------------------------------------------------------+
+| sender_id            | sender                                                                                |
++----------------------+---------------------------------------------------------------------------------------+
+| slots                | {}                                                                                    |
++----------------------+---------------------------------------------------------------------------------------+
+| max_event_history    | 20                                                                                    |
++----------------------+---------------------------------------------------------------------------------------+
+| followup_action      | None                                                                                  |
++----------------------+---------------------------------------------------------------------------------------+
+| latest_action_name   | action_listen                                                                         |
++----------------------+---------------------------------------------------------------------------------------+
+| latest_message       | UserUttered(text: Random, intent: {'name': 'default', 'confidence': 1}, entities: []) |
++----------------------+---------------------------------------------------------------------------------------+
+| latest_bot_utterance | BotUttered(text: None, data: {}, metadata: {})                                        |
++----------------------+---------------------------------------------------------------------------------------+
+| active_form          | {}                                                                                    |
++----------------------+---------------------------------------------------------------------------------------+
+### action names
+action names: ['action_listen', 'action_restart', 'action_session_start', 'action_default_fallback', 'action_deactivate_form',
+               'action_revert_fallback_events', 'action_default_ask_affirmation', 'action_default_ask_rephrase', 'action_back',
+               'utter_default', 'utter_goodbye', 'utter_greet']
+class_to_idx = {'action_listen': 0, 'action_restart': 1, 'action_session_start': 2, 'action_default_fallback': 3,
+                'action_deactivate_form': 4, 'action_revert_fallback_events': 5, 'action_default_ask_affirmation': 6,
+                'action_default_ask_rephrase': 7, 'action_back': 8, 'utter_default': 9, 'utter_goodbye': 10, 'utter_greet': 11}
+
+### Prediction scores:
+[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 0.0, 0.0]
+
+### Explained
+- Domain have to include triggle name
+    if intent == USER_INTENT_RESTART:
+        action = ACTION_RESTART_NAME
+    elif intent == USER_INTENT_BACK:
+        action = ACTION_BACK_NAME
+    elif intent == USER_INTENT_SESSION_START:
+        action = ACTION_SESSION_START_NAME
+    else:
+        action = domain.intent_properties.get(intent, {}).get("triggers")
+- intent = tracker.latest_message.intent.get("name")
+         = default
+-> action = domain.intent_properties.get(intent, {}).get("triggers")
+          = utter_default
+-> scores: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1, 0.0, 0.0]

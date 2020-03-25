@@ -1,0 +1,111 @@
++----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+|          Trackers          |                                                                      Contents                                                                       |
++============================+=====================================================================================================================================================+
+| 0: TrackerWithCachedStates | events: ['ActionExecuted (action_listen, False)', 'UserUttered (greet)', 'ActionExecuted (utter_greet, False)', 'ActionExecuted (action_listen,     |
+|                            | False)', 'UserUttered (start_form)', 'ActionExecuted (some_form, False)', 'Form ()', 'ActionExecuted (action_listen, False)', 'UserUttered (stop)', |
+|                            | 'ActionExecuted (utter_ask_continue, False)', 'ActionExecuted (action_listen, False)', 'UserUttered (affirm)', 'ActionExecuted (some_form, False)', |
+|                            | 'Form ()', 'ActionExecuted (action_listen, False)', 'UserUttered (goodbye)', 'ActionExecuted (utter_goodbye, False)', 'ActionExecuted               |
+|                            | (action_listen, False)']                                                                                                                            |
+|                            | sender_id: simple_story_with_form_stop_continue                                                                                                     |
+|                            | _states: deque([frozenset(), frozenset({('intent_greet', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_greet', 1.0),                     |
+|                            | ('prev_utter_greet', 1.0)}), frozenset({('prev_action_listen', 1.0), ('intent_start_form', 1.0)}), frozenset({('prev_some_form', 1.0),              |
+|                            | ('active_form_some_form', 1.0), ('intent_start_form', 1.0)}), frozenset({('active_form_some_form', 1.0), ('intent_stop', 1.0),                      |
+|                            | ('prev_action_listen', 1.0)}), frozenset({('active_form_some_form', 1.0), ('intent_stop', 1.0), ('prev_utter_ask_continue', 1.0)}),                 |
+|                            | frozenset({('intent_affirm', 1.0), ('active_form_some_form', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_affirm', 1.0),                |
+|                            | ('prev_some_form', 1.0)}), frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_goodbye', 1.0),                   |
+|                            | ('prev_utter_goodbye', 1.0)}), frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)})])                                                  |
+|                            | followup_action: None                                                                                                                               |
+|                            | latest_action_name: action_listen                                                                                                                   |
+|                            | latest_message: UserUttered(text: goodbye, intent: {'name': 'goodbye', 'confidence': 1.0}, entities: [])                                            |
+|                            | latest_bot_utterance: BotUttered(text: None, data: {}, metadata: {})                                                                                |
+|                            | slots: {'cuisine': <TextSlot(cuisine: None)>, 'location': <TextSlot(location: None)>}                                                               |
+|                            |                                                                                                                                                     |
++----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| 1: TrackerWithCachedStates | events: ['ActionExecuted (action_listen, False)', 'UserUttered (greet)', 'ActionExecuted (utter_greet, False)', 'ActionExecuted (action_listen,     |
+|                            | False)', 'UserUttered (start_form)', 'ActionExecuted (some_form, False)', 'Form ()', 'Form ()', 'ActionExecuted (action_listen, False)',            |
+|                            | 'UserUttered (default)', 'ActionExecuted (utter_default, False)', 'ActionExecuted (action_listen, False)', 'UserUttered (goodbye)', 'ActionExecuted |
+|                            | (utter_goodbye, False)', 'ActionExecuted (action_listen, False)']                                                                                   |
+|                            | sender_id: simple_story_with_form_happy                                                                                                             |
+|                            | _states: deque([frozenset(), frozenset({('intent_greet', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_greet', 1.0),                     |
+|                            | ('prev_utter_greet', 1.0)}), frozenset({('prev_action_listen', 1.0), ('intent_start_form', 1.0)}), frozenset({('prev_some_form', 1.0),              |
+|                            | ('intent_start_form', 1.0)}), frozenset({('intent_default', 1.0), ('prev_action_listen', 1.0)}), frozenset({('prev_utter_default', 1.0),            |
+|                            | ('intent_default', 1.0)}), frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_goodbye', 1.0),                   |
+|                            | ('prev_utter_goodbye', 1.0)}), frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)})])                                                  |
+|                            | followup_action: None                                                                                                                               |
+|                            | latest_action_name: action_listen                                                                                                                   |
+|                            | latest_message: UserUttered(text: goodbye, intent: {'name': 'goodbye', 'confidence': 1.0}, entities: [])                                            |
+|                            | latest_bot_utterance: BotUttered(text: None, data: {}, metadata: {})                                                                                |
+|                            | slots: {'cuisine': <TextSlot(cuisine: None)>, 'location': <TextSlot(location: None)>}                                                               |
+|                            |                                                                                                                                                     |
++----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| 2: TrackerWithCachedStates | events: ['ActionExecuted (action_listen, False)', 'UserUttered (greet)', 'ActionExecuted (utter_greet, False)', 'ActionExecuted (action_listen,     |
+|                            | False)', 'UserUttered (start_form)', 'ActionExecuted (some_form, False)', 'Form ()', 'ActionExecuted (action_listen, False)', 'UserUttered          |
+|                            | (default)', 'ActionExecuted (utter_default, False)', 'ActionExecuted (some_form, False)', 'Form ()', 'ActionExecuted (action_listen, False)',       |
+|                            | 'UserUttered (goodbye)', 'ActionExecuted (utter_goodbye, False)', 'ActionExecuted (action_listen, False)']                                          |
+|                            | sender_id: simple_story_with_form_unhappy                                                                                                           |
+|                            | _states: deque([frozenset(), frozenset({('intent_greet', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_greet', 1.0),                     |
+|                            | ('prev_utter_greet', 1.0)}), frozenset({('prev_action_listen', 1.0), ('intent_start_form', 1.0)}), frozenset({('prev_some_form', 1.0),              |
+|                            | ('active_form_some_form', 1.0), ('intent_start_form', 1.0)}), frozenset({('active_form_some_form', 1.0), ('intent_default', 1.0),                   |
+|                            | ('prev_action_listen', 1.0)}), frozenset({('active_form_some_form', 1.0), ('prev_utter_default', 1.0), ('intent_default', 1.0)}),                   |
+|                            | frozenset({('prev_some_form', 1.0), ('intent_default', 1.0)}), frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)}),                   |
+|                            | frozenset({('intent_goodbye', 1.0), ('prev_utter_goodbye', 1.0)}), frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)})])              |
+|                            | followup_action: None                                                                                                                               |
+|                            | latest_action_name: action_listen                                                                                                                   |
+|                            | latest_message: UserUttered(text: goodbye, intent: {'name': 'goodbye', 'confidence': 1.0}, entities: [])                                            |
+|                            | latest_bot_utterance: BotUttered(text: None, data: {}, metadata: {})                                                                                |
+|                            | slots: {'cuisine': <TextSlot(cuisine: None)>, 'location': <TextSlot(location: None)>}                                                               |
+|                            |                                                                                                                                                     |
++----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| 3: TrackerWithCachedStates | events: ['ActionExecuted (action_listen, False)', 'UserUttered (greet)', 'ActionExecuted (utter_greet, False)', 'ActionExecuted (action_listen,     |
+|                            | False)', 'UserUttered (start_form)', 'ActionExecuted (some_form, False)', 'Form ()', 'ActionExecuted (action_listen, False)', 'UserUttered (stop)', |
+|                            | 'ActionExecuted (utter_ask_continue, False)', 'ActionExecuted (action_listen, False)', 'ActionExecuted (some_form, False)', 'Form ()',              |
+|                            | 'ActionExecuted (action_listen, False)', 'UserUttered (goodbye)', 'ActionExecuted (utter_goodbye, False)', 'ActionExecuted (action_listen, False)'] |
+|                            | sender_id: simple_story_with_form_stop_inform                                                                                                       |
+|                            | _states: deque([frozenset(), frozenset({('intent_greet', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_greet', 1.0),                     |
+|                            | ('prev_utter_greet', 1.0)}), frozenset({('prev_action_listen', 1.0), ('intent_start_form', 1.0)}), frozenset({('prev_some_form', 1.0),              |
+|                            | ('active_form_some_form', 1.0), ('intent_start_form', 1.0)}), frozenset({('active_form_some_form', 1.0), ('intent_stop', 1.0),                      |
+|                            | ('prev_action_listen', 1.0)}), frozenset({('active_form_some_form', 1.0), ('intent_stop', 1.0), ('prev_utter_ask_continue', 1.0)}),                 |
+|                            | frozenset({('active_form_some_form', 1.0), ('intent_stop', 1.0), ('prev_action_listen', 1.0)}), frozenset({('prev_some_form', 1.0), ('intent_stop', |
+|                            | 1.0)}), frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_goodbye', 1.0), ('prev_utter_goodbye', 1.0)}),       |
+|                            | frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)})])                                                                                 |
+|                            | followup_action: None                                                                                                                               |
+|                            | latest_action_name: action_listen                                                                                                                   |
+|                            | latest_message: UserUttered(text: goodbye, intent: {'name': 'goodbye', 'confidence': 1.0}, entities: [])                                            |
+|                            | latest_bot_utterance: BotUttered(text: None, data: {}, metadata: {})                                                                                |
+|                            | slots: {'cuisine': <TextSlot(cuisine: None)>, 'location': <TextSlot(location: None)>}                                                               |
+|                            |                                                                                                                                                     |
++----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| 4: TrackerWithCachedStates | events: ['ActionExecuted (action_listen, False)', 'UserUttered (greet)', 'ActionExecuted (utter_greet, False)', 'ActionExecuted (action_listen,     |
+|                            | False)', 'UserUttered (default)', 'ActionExecuted (utter_default, False)', 'ActionExecuted (action_listen, False)', 'UserUttered (goodbye)',        |
+|                            | 'ActionExecuted (utter_goodbye, False)', 'ActionExecuted (action_listen, False)']                                                                   |
+|                            | sender_id: simple_story_with_multiple_turns                                                                                                         |
+|                            | _states: deque([frozenset(), frozenset({('intent_greet', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_greet', 1.0),                     |
+|                            | ('prev_utter_greet', 1.0)}), frozenset({('intent_default', 1.0), ('prev_action_listen', 1.0)}), frozenset({('prev_utter_default', 1.0),             |
+|                            | ('intent_default', 1.0)}), frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_goodbye', 1.0),                   |
+|                            | ('prev_utter_goodbye', 1.0)}), frozenset({('intent_goodbye', 1.0), ('prev_action_listen', 1.0)})])                                                  |
+|                            | followup_action: None                                                                                                                               |
+|                            | latest_action_name: action_listen                                                                                                                   |
+|                            | latest_message: UserUttered(text: goodbye, intent: {'name': 'goodbye', 'confidence': 1.0}, entities: [])                                            |
+|                            | latest_bot_utterance: BotUttered(text: None, data: {}, metadata: {})                                                                                |
+|                            | slots: {'cuisine': <TextSlot(cuisine: None)>, 'location': <TextSlot(location: None)>}                                                               |
+|                            |                                                                                                                                                     |
++----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+
+| 5: TrackerWithCachedStates | events: ['ActionExecuted (action_listen, False)', 'UserUttered (greet)', 'ActionExecuted (utter_greet, False)', 'ActionExecuted (action_listen,     |
+|                            | False)', 'UserUttered (start_form)', 'ActionExecuted (some_form, False)', 'Form ()', 'ActionExecuted (action_listen, False)', 'UserUttered (stop)', |
+|                            | 'ActionExecuted (utter_ask_continue, False)', 'ActionExecuted (action_listen, False)', 'UserUttered (deny)', 'ActionExecuted                        |
+|                            | (action_deactivate_form, False)', 'Form ()', 'ActionExecuted (utter_goodbye, False)', 'ActionExecuted (action_listen, False)']                      |
+|                            | sender_id: simple_story_with_form_stop_deactivate                                                                                                   |
+|                            | _states: deque([frozenset(), frozenset({('intent_greet', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_greet', 1.0),                     |
+|                            | ('prev_utter_greet', 1.0)}), frozenset({('prev_action_listen', 1.0), ('intent_start_form', 1.0)}), frozenset({('prev_some_form', 1.0),              |
+|                            | ('active_form_some_form', 1.0), ('intent_start_form', 1.0)}), frozenset({('active_form_some_form', 1.0), ('intent_stop', 1.0),                      |
+|                            | ('prev_action_listen', 1.0)}), frozenset({('active_form_some_form', 1.0), ('intent_stop', 1.0), ('prev_utter_ask_continue', 1.0)}),                 |
+|                            | frozenset({('intent_deny', 1.0), ('active_form_some_form', 1.0), ('prev_action_listen', 1.0)}), frozenset({('intent_deny', 1.0),                    |
+|                            | ('prev_action_deactivate_form', 1.0)}), frozenset({('intent_deny', 1.0), ('prev_utter_goodbye', 1.0)}), frozenset({('intent_deny', 1.0),            |
+|                            | ('prev_action_listen', 1.0)})])                                                                                                                     |
+|                            | followup_action: None                                                                                                                               |
+|                            | latest_action_name: action_listen                                                                                                                   |
+|                            | latest_message: UserUttered(text: deny, intent: {'name': 'deny', 'confidence': 1.0}, entities: [])                                                  |
+|                            | latest_bot_utterance: BotUttered(text: None, data: {}, metadata: {})                                                                                |
+|                            | slots: {'cuisine': <TextSlot(cuisine: None)>, 'location': <TextSlot(location: None)>}                                                               |
+|                            |                                                                                                                                                     |
++----------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------+

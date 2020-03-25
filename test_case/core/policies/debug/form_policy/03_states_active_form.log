@@ -1,0 +1,17 @@
+states: [{'prev_some_form': 1.0}, {'prev_action_listen': 1.0, 'active_form_some_form': 1.0, 'intent_stop': 1.0}]
+active_form: some_form
+
+states: [{'prev_utter_ask_continue': 1.0}, {'prev_action_listen': 1.0, 'active_form_some_form': 1.0, 'intent_affirm': 1.0}]
+active_form: some_form
+
+states: [{'prev_some_form': 1.0}, {'prev_action_listen': 1.0, 'active_form_some_form': 1.0, 'intent_default': 1.0}]
+active_form: some_form
+
+states: [{'prev_utter_ask_continue': 1.0}, {'prev_action_listen': 1.0, 'active_form_some_form': 1.0, 'intent_stop': 1.0}]
+active_form: some_form
+
+states: [{'prev_utter_ask_continue': 1.0}, {'prev_action_listen': 1.0, 'active_form_some_form': 1.0, 'intent_deny': 1.0}]
+active_form: some_form
+
+
+Process finished with exit code 0

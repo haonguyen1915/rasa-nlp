@@ -21,7 +21,7 @@ def featurizer():
 async def test_train_keras_policy():
     default_domain = Domain.load(DEFAULT_DOMAIN_PATH_WITH_SLOTS)
     trackers = await training.load_data(
-        DEFAULT_STORIES_FILE, default_domain, augmentation_factor=50, debug_plots=False
+        DEFAULT_STORIES_FILE, default_domain, augmentation_factor=0, debug_plots=False
     )
     config = {
         "epochs": 100
@@ -48,5 +48,5 @@ async def test_infer():
 
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
-    # loop.run_until_complete(test_train_keras_policy())
-    loop.run_until_complete(test_infer())
+    loop.run_until_complete(test_train_keras_policy())
+    # loop.run_until_complete(test_infer())
