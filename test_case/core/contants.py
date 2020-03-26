@@ -69,5 +69,24 @@ EXAMPLE_DOMAINS = [
     "examples/moodbot/domain.yml",
     "examples/restaurantbot/domain.yml",
 ]
+templates = {
+        "utter_ask_rephrase": [{"text": "can you rephrase that?"}],
+        "utter_restart": [{"text": "congrats, you've restarted me!"}],
+        "utter_back": [{"text": "backing up..."}],
+        "utter_invalid": [{"text": "a template referencing an invalid {variable}."}],
+        "utter_buttons": [
+            {
+                "text": "button message",
+                "buttons": [
+                    {"payload": "button1", "title": "button1"},
+                    {"payload": "button2", "title": "button2"},
+                ],
+            }
+        ],
+    }
+template_nlg = TemplatedNaturalLanguageGenerator(templates)
+default_channel = CollectingOutputChannel()
 default_domain = Domain.load(DEFAULT_DOMAIN_PATH_WITH_SLOTS)
-default_nlg = DialogueStateTracker("my-sender", default_domain.slots)
+default_nlg = TemplatedNaturalLanguageGenerator(default_domain.templates)
+default_tracker = DialogueStateTracker("my-sender", default_domain.slots)
+template_sender_tracker = DialogueStateTracker("template-sender", default_domain.slots)

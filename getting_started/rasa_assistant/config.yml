@@ -1,0 +1,4 @@
+policies:
+- name: MemoizationPolicy
+  max_history: 1
+- name: MappingPolicy
