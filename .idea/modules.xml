@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../rasa_blogs/rasa-lookup-table-nlu/.idea/rasa-lookup-table-nlu.iml" filepath="$PROJECT_DIR$/../rasa_blogs/rasa-lookup-table-nlu/.idea/rasa-lookup-table-nlu.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/rasa-nlp.iml" filepath="$PROJECT_DIR$/.idea/rasa-nlp.iml" />
     </modules>
   </component>

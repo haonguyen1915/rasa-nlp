@@ -1,13 +1,4 @@
-import asyncio
-from rasa.core.policies.two_stage_fallback import TwoStageFallbackPolicy
 from constants_ import *
-from rasa.core.domain import Domain
-from unittest.mock import Mock, patch
-
-import numpy as np
-import pytest
-
-from rasa.core import training
 from rasa.core.actions.action import (
     ACTION_DEFAULT_ASK_AFFIRMATION_NAME,
     ACTION_DEFAULT_ASK_REPHRASE_NAME,
@@ -17,54 +8,9 @@ from rasa.core.actions.action import (
     ACTION_RESTART_NAME,
     ACTION_BACK_NAME,
 )
-from rasa.core.constants import USER_INTENT_RESTART, USER_INTENT_BACK
-from rasa.core.channels.channel import UserMessage
-from rasa.core.domain import Domain
-from rasa.core.events import ActionExecuted, ConversationPaused
-from rasa.core.featurizers import (
-    BinarySingleStateFeaturizer,
-    LabelTokenizerSingleStateFeaturizer,
-    MaxHistoryTrackerFeaturizer,
-    FullDialogueTrackerFeaturizer,
-)
 from rasa.core.policies.two_stage_fallback import TwoStageFallbackPolicy
-from rasa.core.policies.ted_policy import TEDPolicy
-from rasa.core.policies.fallback import FallbackPolicy
-from rasa.core.policies.form_policy import FormPolicy
-from rasa.core.policies.keras_policy import KerasPolicy
-from rasa.core.policies.mapping_policy import MappingPolicy
-from rasa.core.policies.memoization import AugmentedMemoizationPolicy, MemoizationPolicy
-from rasa.core.policies.sklearn_policy import SklearnPolicy
-from rasa.core.trackers import DialogueStateTracker
-from rasa.utils.tensorflow.constants import (
-    SIMILARITY_TYPE,
-    RANKING_LENGTH,
-    LOSS_TYPE,
-    SCALE_LOSS,
-    EVAL_NUM_EXAMPLES,
-    EPOCHS,
-    KEY_RELATIVE_ATTENTION,
-    VALUE_RELATIVE_ATTENTION,
-    MAX_RELATIVE_POSITION,
-)
-from rasa.utils import train_utils
-from rasa.core.channels.channel import CollectingOutputChannel, OutputChannel
 from test_case.core.utils import *
 from test_case.core.contants import *
-
-# from tests.core.conftest import (
-#     DEFAULT_DOMAIN_PATH_WITH_MAPPING,
-#     DEFAULT_DOMAIN_PATH_WITH_SLOTS,
-#     DEFAULT_STORIES_FILE,
-# )
-# from tests.core.utilities import get_tracker, read_dialogue_file, user_uttered
-#
-
-# async def train_trackers(domain, augmentation_factor=20):
-#     return await training.load_data(
-#         DEFAULT_STORIES_FILE, domain, augmentation_factor=augmentation_factor
-#     )
-
 
 prj_dir = "{}/test_case/core/policies".format(PRJ_DIR)
 content = """
@@ -88,9 +34,12 @@ def _get_next_action(policy, events, domain):
 
 async def _get_tracker_after_reverts(events, channel, nlg, domain):
     tracker = get_tracker(events)
+    # viz_tracker(tracker)
     action = ActionRevertFallbackEvents()
     events += await action.run(channel, nlg, tracker, domain)
-
+    # events = await action.run(channel, nlg, tracker, domain)
+    # viz_events(events)
+    # exit()
     return get_tracker(events)
 
 
@@ -119,6 +68,9 @@ async def test_affirmation():
         ActionExecuted(ACTION_LISTEN_NAME),
         user_uttered("greet", 1),
     ]
+    # tracker = DialogueStateTracker.from_events("🕵️‍♀️", events)
+    # appied_events = tracker.applied_events()
+    # viz_events(appied_events)
 
     tracker = await _get_tracker_after_reverts(
         events, default_channel, default_nlg, default_domain
@@ -130,6 +82,14 @@ async def test_affirmation():
     assert tracker.export_stories() == (
         "## sender\n* greet\n    - utter_hello\n* greet\n"
     )
+    # tracker = DialogueStateTracker.from_events("🕵️‍♀️", events)
+    # viz_events(tracker.events)
+
+    appied_events = tracker.applied_events()
+    # viz_events(appied_events)
+    # print(tracker.export_stories())
+
+
 def test_ask_rephrase():
     policy = TwoStageFallbackPolicy.load("{}/models/two_stage_fallback".format(prj_dir))
     events = [
@@ -144,10 +104,149 @@ def test_ask_rephrase():
 
     assert next_action == ACTION_DEFAULT_ASK_REPHRASE_NAME
 
+
+async def test_successful_rephrasing():
+    events = [
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("greet", 0.2),
+        ActionExecuted(ACTION_DEFAULT_ASK_AFFIRMATION_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("deny", 1),
+        ActionExecuted(ACTION_DEFAULT_ASK_REPHRASE_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("bye", 1),
+    ]
+
+    tracker = await _get_tracker_after_reverts(
+        events, default_channel, default_nlg, default_domain
+    )
+    # viz_events(tracker.events)
+
+    assert "bye" == tracker.latest_message.parse_data["intent"]["name"]
+    assert tracker.export_stories() == "## sender\n* bye\n"
+
+    # viz_events(tracker.applied_events())
+
+
+def test_affirm_rephrased_intent():
+    trained_policy = TwoStageFallbackPolicy.load("{}/models/two_stage_fallback".format(prj_dir))
+    events = [
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("greet", 0.2),
+        ActionExecuted(ACTION_DEFAULT_ASK_AFFIRMATION_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("deny", 1),
+        ActionExecuted(ACTION_DEFAULT_ASK_REPHRASE_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("greet", 0.2),
+    ]
+
+    next_action = _get_next_action(trained_policy, events, default_domain)
+
+    assert next_action == ACTION_DEFAULT_ASK_AFFIRMATION_NAME
+
+
+async def test_affirmed_rephrasing():
+    events = [
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("greet", 0.2),
+        ActionExecuted(ACTION_DEFAULT_ASK_AFFIRMATION_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("deny", 1),
+        ActionExecuted(ACTION_DEFAULT_ASK_REPHRASE_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("bye", 0.2),
+        ActionExecuted(ACTION_DEFAULT_ASK_AFFIRMATION_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("bye", 1),
+    ]
+
+    tracker = await _get_tracker_after_reverts(
+        events, default_channel, default_nlg, default_domain
+    )
+    # viz_events(tracker.events)
+    assert "bye" == tracker.latest_message.parse_data["intent"]["name"]
+    assert tracker.export_stories() == "## sender\n* bye\n"
+    # viz_events(tracker.applied_events())
+
+
+def test_denied_rephrasing_affirmation():
+    trained_policy = TwoStageFallbackPolicy.load("{}/models/two_stage_fallback".format(prj_dir))
+    events = [
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("greet", 0.2),
+        ActionExecuted(ACTION_DEFAULT_ASK_AFFIRMATION_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("deny", 1),
+        ActionExecuted(ACTION_DEFAULT_ASK_REPHRASE_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("bye", 0.2),
+        ActionExecuted(ACTION_DEFAULT_ASK_AFFIRMATION_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("deny", 1),
+    ]
+
+    next_action = _get_next_action(trained_policy, events, default_domain)
+
+    assert next_action == ACTION_DEFAULT_FALLBACK_NAME
+
+
+async def test_rephrasing_instead_affirmation():
+    events = [
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("greet", 1),
+        ActionExecuted("utter_hello"),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("greet", 0.2),
+        ActionExecuted(ACTION_DEFAULT_ASK_AFFIRMATION_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("bye", 1),
+    ]
+
+    tracker = await _get_tracker_after_reverts(
+        events, default_channel, default_nlg, default_domain
+    )
+
+    assert "bye" == tracker.latest_message.parse_data["intent"]["name"]
+    assert tracker.export_stories() == (
+        "## sender\n* greet\n    - utter_hello\n* bye\n"
+    )
+    viz_events(tracker.events)
+    viz_events(tracker.applied_events())
+
+
+def test_unknown_instead_affirmation():
+    trained_policy = TwoStageFallbackPolicy.load("{}/models/two_stage_fallback".format(prj_dir))
+    events = [
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("greet", 0.2),
+        ActionExecuted(ACTION_DEFAULT_ASK_AFFIRMATION_NAME),
+        ActionExecuted(ACTION_LISTEN_NAME),
+        user_uttered("greet", 0.2),
+    ]
+
+    next_action = _get_next_action(trained_policy, events, default_domain)
+
+    assert next_action == ACTION_DEFAULT_FALLBACK_NAME
+
+
+def test_listen_after_hand_off():
+    trained_policy = TwoStageFallbackPolicy.load("{}/models/two_stage_fallback".format(prj_dir))
+    events = [ActionExecuted(ACTION_DEFAULT_FALLBACK_NAME)]
+    next_action = _get_next_action(trained_policy, events, default_domain)
+    assert next_action == ACTION_LISTEN_NAME
+
+
 if __name__ == "__main__":
     loop = asyncio.get_event_loop()
     # loop.run_until_complete(test_train_fallback_policy())
-    # loop.run_until_complete(test_ask_affirmation())
-    test_ask_affirmation()
-    loop.run_until_complete(test_affirmation())
-    test_ask_rephrase()
+    # test_ask_affirmation()
+    # loop.run_until_complete(test_affirmation())
+    # test_ask_rephrase()
+    # loop.run_until_complete(test_successful_rephrasing())
+    # test_affirm_rephrased_intent()
+    # loop.run_until_complete(test_affirmed_rephrasing())
+    # test_denied_rephrasing_affirmation()
+    # loop.run_until_complete(test_rephrasing_instead_affirmation())
+    test_unknown_instead_affirmation()
+    test_listen_after_hand_off()
